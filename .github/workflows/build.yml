@@ -316,7 +316,7 @@ jobs:
 
           cat ./publish/test-ipv6.txt | perl -ne '/^(full):([^:]+)(\n$|:@.+)/ && print "DOMAIN,$2\n"' > ./tmp/temp-networktest-other.txt
           cat ./publish/category-speedtest.txt | perl -ne '/^(full):([^:]+)(\n$|:@.+)/ && print "DOMAIN,$2\n"' >> ./tmp/temp-networktest-other.txt
-          curl -sSL ${networktest} | awk '/^DOMAIN,|^DOMAIN-KEYWORD,/' >> ./tmp/temp-networktest-other.txt
+          curl -sSL ${networktest} | awk '/^DOMAIN,/' >> ./tmp/temp-networktest-other.txt
           sort --ignore-case -u ./tmp/temp-networktest-other.txt > ./tmp/networktest-other.txt
 
       - name: Generate `tld-proxy`
